@@ -1,0 +1,950 @@
+[gd_scene load_steps=76 format=3 uid="uid://brpeor4g25fml"]
+
+[ext_resource type="Script" path="res://P3.gd" id="1_dcv5b"]
+[ext_resource type="Shader" uid="uid://dq3eh51xrnr07" path="res://s3.tres" id="1_y2cjd"]
+[ext_resource type="Script" path="res://P4.gd" id="2_drulb"]
+[ext_resource type="Script" path="res://p2.gd" id="2_tvl0x"]
+[ext_resource type="Script" path="res://P1.gd" id="3_51ghm"]
+[ext_resource type="Shader" uid="uid://c8dvwqbsg07r1" path="res://sh1.tres" id="3_hguca"]
+[ext_resource type="Script" path="res://test.gd" id="4_ufnjv"]
+[ext_resource type="Shader" path="res://2.gdshader" id="4_vsrgl"]
+[ext_resource type="Shader" path="res://me2.gdshader" id="6_2khva"]
+[ext_resource type="Script" path="res://afficheQuestion.gd" id="7_8sdh7"]
+[ext_resource type="Script" path="res://me2.gd" id="7_hvxih"]
+[ext_resource type="Script" path="res://Re.gd" id="7_loj4a"]
+[ext_resource type="Script" path="res://Re3.gd" id="8_43n8c"]
+[ext_resource type="Script" path="res://Timer.gd" id="8_qavw1"]
+[ext_resource type="Script" path="res://Re4.gd" id="9_xnyir"]
+[ext_resource type="Script" path="res://end.gd" id="10_em1c2"]
+[ext_resource type="Script" path="res://Re2.gd" id="10_xoskx"]
+[ext_resource type="Script" path="res://Mort.gd" id="13_k0xhc"]
+[ext_resource type="Material" uid="uid://bruab3kvo43a7" path="res://mat.tres" id="15_wah8s"]
+[ext_resource type="Script" path="res://eau.gd" id="16_ir3o3"]
+[ext_resource type="Script" path="res://Button.gd" id="17_cb002"]
+[ext_resource type="Script" path="res://lum.gd" id="17_jnrq8"]
+[ext_resource type="Script" path="res://secu.gd" id="18_5oljy"]
+[ext_resource type="Script" path="res://coli.gd" id="19_gi6cr"]
+[ext_resource type="Script" path="res://score.gd" id="20_pso7k"]
+[ext_resource type="Script" path="res://audioBo.gd" id="21_jfnau"]
+[ext_resource type="AudioStream" uid="uid://clg3icmd0c8ou" path="res://Jim Yosef - Link [NCS Release].mp3" id="21_tvonb"]
+[ext_resource type="Script" path="res://audio.gd" id="22_y4xjs"]
+[ext_resource type="Script" path="res://proch.gd" id="25_mea12"]
+[ext_resource type="Script" path="res://Multiplicateur.gd" id="25_vwjvh"]
+[ext_resource type="Texture2D" uid="uid://cbj0uiaeqen5x" path="res://stopwatch (1).png" id="28_47tdu"]
+[ext_resource type="StyleBox" uid="uid://badvw5dkyj18h" path="res://styleChoi.tres" id="29_kyfja"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fy1ew"]
+render_priority = 0
+shader = ExtResource("1_y2cjd")
+shader_parameter/albedo = Color(0.592157, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_esrhb"]
+material = SubResource("ShaderMaterial_fy1ew")
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_dalyt"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mmf58"]
+render_priority = 0
+shader = ExtResource("3_hguca")
+shader_parameter/albedo = Color(0.180392, 0.431373, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_3tk8x"]
+material = SubResource("ShaderMaterial_mmf58")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_thkvd"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3hx0s"]
+render_priority = 0
+shader = ExtResource("6_2khva")
+shader_parameter/albedo = Color(0.713726, 0.713726, 0.713726, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_paux3"]
+material = SubResource("ShaderMaterial_3hx0s")
+
+[sub_resource type="BoxMesh" id="BoxMesh_gi5gl"]
+material = SubResource("ShaderMaterial_fy1ew")
+
+[sub_resource type="GDScript" id="GDScript_8wsin"]
+resource_name = "MovePlatform"
+script/source = "extends MeshInstance3D
+
+
+static var mat
+static var chemin = \"shader_parameter/albedo\"
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	mat = self.mesh.surface_get_material(0)
+	
+
+var i = 0
+func _on_area_3d_body_entered(body):
+	if i != 0:
+		var base : = Color(0.592, 0, 0)
+		var contact = Color(0.961, 0, 0)
+		#self.set_instance_shader_parameter(\"albedo\",contact)
+		#mat.set_instance_shader_parameter()
+		#mat.set_instance_shader_parameter(\"albedo\",base)
+		mat.set(chemin,contact) # Replace with function body.
+	else :
+		i += 1
+
+
+func _on_area_3d_body_exited(body):
+	
+	
+		var base : = Color(0.592, 0, 0)
+		var contact = Color(0.961, 0, 0)
+		#self.set_instance_shader_parameter(\"albedo\",contact)
+		mat.set(chemin,base) # Replace with function body.
+	
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ajqnm"]
+render_priority = 0
+shader = ExtResource("4_vsrgl")
+shader_parameter/albedo = Color(0.730559, 0.561198, 7.70092e-07, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_0or7o"]
+material = SubResource("ShaderMaterial_ajqnm")
+
+[sub_resource type="GDScript" id="GDScript_hlo0x"]
+script/source = "extends MeshInstance3D
+
+static var mat
+static var chemin = \"shader_parameter/albedo\"
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	mat = self.mesh.surface_get_material(0)
+	
+
+var i = 0
+func _on_area_3d_body_entered(body):
+	if i != 0:
+		var base : = Color(0.731, 0.561, 0)
+		var contact = Color(0.882, 0.682, 0)
+		#self.set_instance_shader_parameter(\"albedo\",contact)
+		#mat.set_instance_shader_parameter()
+		#mat.set_instance_shader_parameter(\"albedo\",base)
+		mat.set(chemin,contact) # Replace with function body.
+	else :
+		i += 1
+
+func _on_area_3d_body_exited(body):
+	
+	
+	var base : = Color(0.731, 0.561, 0)
+	var contact = Color(0.882, 0.682, 0)
+	#self.set_instance_shader_parameter(\"albedo\",contact)
+	mat.set(chemin,base) # Replace with function body.
+	
+"
+
+[sub_resource type="GDScript" id="GDScript_qfdio"]
+resource_name = "character"
+script/source = "extends CharacterBody3D
+
+
+var a : TextEdit
+const SPEED = 5.0
+const JUMP_VELOCITY = 4.5
+
+# Get the gravity from the project settings to be synced with RigidBody nodes.
+var gravity = ProjectSettings.get_setting(\"physics/3d/default_gravity\")
+var Area : Area3D
+
+
+func _physics_process(delta):
+	# Add the gravity.
+	if not is_on_floor():
+		velocity.y -= gravity * delta
+
+	# Handle Jump.
+
+	# Get the input direction and handle the movement/deceleration.
+	# As good practice, you should replace UI actions with custom gameplay actions.
+	
+	var input_dir = Input.get_vector(\"ui_left\", \"ui_right\", \"ui_up\", \"ui_down\")
+	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	if direction:
+		velocity.x = direction.x * SPEED
+		velocity.z = direction.z * SPEED
+	else:
+		velocity.x = move_toward(velocity.x, 0, SPEED)
+		velocity.z = move_toward(velocity.z, 0, SPEED)
+
+	move_and_slide()
+
+
+func _on_Player_body_entered(body):
+	if body.is_in_group(\"DeathWAll\"):
+		global_position = Vector3(4.018,2.157,-0.345)
+
+
+func _on_area_3d_body_entered(body):
+	
+	if body.is_in_group(\"Joueur\"):
+		
+		#global_position = Vector3(4.018,2.157,-0.345)
+		emit_signal(\"script_changed\")
+		# TODO STOP timer
+		
+func _on_character_body_3d_script_changed(body):
+	global_position = Vector3(4.018,2.157,-0.345)
+
+
+
+
+func _on_button_pressed():
+	global_position = Vector3(4.018,2.157,-0.345) # Replace with function body.
+
+
+func _on_timer_ready():
+	global_position = Vector3(4.018,2.157,-0.345) # Replace with function body.
+"
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_08yn8"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_4gdu3"]
+
+[sub_resource type="GDScript" id="GDScript_a76ne"]
+resource_name = "JoueurScript"
+script/source = "extends MeshInstance3D
+
+var speed = 5
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+"
+
+[sub_resource type="GDScript" id="GDScript_1hn0d"]
+resource_name = "Death"
+script/source = "extends Area3D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	print_debug(\"test\")# Replace with function body.
+	#connect(\"area_entered\",_on_area_entered(0), 1)
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _on_area_entered(area):
+	pass#	print_debug(\"adieu Joeuur\")
+"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0a8cs"]
+
+[sub_resource type="GDScript" id="GDScript_e1mbo"]
+resource_name = "Test"
+
+[sub_resource type="LabelSettings" id="LabelSettings_b7ixp"]
+outline_size = 1
+
+[sub_resource type="LabelSettings" id="LabelSettings_mmxuj"]
+outline_size = 1
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f7e2o"]
+size = Vector2(251.5, 138)
+
+[sub_resource type="LabelSettings" id="LabelSettings_daxpu"]
+outline_size = 1
+
+[sub_resource type="LabelSettings" id="LabelSettings_ccw26"]
+outline_size = 1
+
+[sub_resource type="LabelSettings" id="LabelSettings_7jhoh"]
+outline_size = 1
+
+[sub_resource type="QuadMesh" id="QuadMesh_cb7gb"]
+material = ExtResource("15_wah8s")
+subdivide_width = 200
+subdivide_depth = 200
+orientation = 1
+
+[sub_resource type="BoxMesh" id="BoxMesh_0m1lk"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ssvpw"]
+bounce = 100.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6ppxt"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_1w3ja"]
+font_size = 15
+font_color = Color(1, 1, 0.360784, 1)
+outline_size = 4
+outline_color = Color(1, 1, 0.360784, 1)
+shadow_offset = Vector2(0, 0)
+
+[sub_resource type="LabelSettings" id="LabelSettings_fs6hk"]
+font_size = 8
+font_color = Color(0.631373, 0.627451, 0.65098, 1)
+outline_size = 2
+outline_color = Color(0.631373, 0.627451, 0.65098, 1)
+
+[sub_resource type="Theme" id="Theme_41o2x"]
+default_base_scale = 0.7
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_60auf"]
+bg_color = Color(0.341176, 0.670588, 0.678431, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.517647, 0.882353, 0.835294, 1)
+border_blend = true
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+corner_detail = 15
+shadow_color = Color(1, 1, 1, 0.6)
+shadow_size = 5
+anti_aliasing_size = 4.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8aiy5"]
+bg_color = Color(0.92549, 0.917647, 0.913725, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+border_blend = true
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+corner_detail = 15
+shadow_color = Color(1, 1, 1, 0.6)
+shadow_size = 5
+anti_aliasing_size = 4.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v2pcp"]
+bg_color = Color(1, 0.709804, 0.141176, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 0.913725, 0.0862745, 1)
+border_blend = true
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+corner_detail = 15
+shadow_color = Color(0.917647, 0.917647, 0, 0.6)
+shadow_size = 5
+anti_aliasing_size = 4.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_34xf7"]
+font_size = 20
+outline_size = 4
+shadow_size = 0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vwwet"]
+bg_color = Color(0.188235, 0.423529, 0.427451, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.25098, 0.568627, 0.533333, 1)
+border_blend = true
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+corner_detail = 15
+shadow_color = Color(0, 0.713726, 0.713726, 0.6)
+shadow_size = 5
+anti_aliasing_size = 4.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_6hb5m"]
+font_size = 20
+outline_size = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wolxc"]
+bg_color = Color(0.0901961, 0.235294, 0.235294, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.0862745, 0.243137, 0.223529, 1)
+border_blend = true
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+corner_detail = 15
+shadow_color = Color(0, 0.482353, 0.482353, 0.6)
+shadow_size = 5
+anti_aliasing_size = 4.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aa4wd"]
+bg_color = Color(0.639216, 0.611765, 0.572549, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.937255, 0.933333, 0.929412, 1)
+border_blend = true
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+corner_detail = 15
+shadow_color = Color(0.905882, 0.905882, 0.901961, 0.6)
+shadow_size = 5
+anti_aliasing_size = 4.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oqgox"]
+bg_color = Color(0.831373, 0.545098, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 0.866667, 0.0156863, 1)
+border_blend = true
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+corner_detail = 15
+shadow_color = Color(1, 0.866667, 0.6, 0.6)
+shadow_size = 5
+anti_aliasing_size = 4.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jnlj1"]
+bg_color = Color(0.384314, 0.592157, 0.168627, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.568627, 0.843137, 0.34902, 1)
+border_blend = true
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+corner_detail = 15
+shadow_color = Color(0.529412, 0.941176, 0.298039, 0.6)
+shadow_size = 5
+anti_aliasing_size = 4.0
+
+[node name="Node3D" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.00745, 1.44514, -0.699464)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(5, 0, 0, 0, 1, 0, 0, 0, 5, -21.4287, 2.25938, 7.49985)
+mesh = SubResource("BoxMesh_esrhb")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(3, 0, 0, 0, 5, 0, 0, 0, 3, -21.4287, -2.74062, 7.49985)
+mesh = SubResource("CylinderMesh_dalyt")
+
+[node name="P4" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -5)
+script = ExtResource("2_drulb")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="P4"]
+transform = Transform3D(5, 0, 0, 0, 1, 0, 0, 0, 5, 1, 0, 0)
+mesh = SubResource("BoxMesh_3tk8x")
+skeleton = NodePath("../..")
+script = ExtResource("4_ufnjv")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="P4/MeshInstance3D3"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="P4/MeshInstance3D3/StaticBody3D"]
+shape = SubResource("BoxShape3D_thkvd")
+
+[node name="Area3D" type="Area3D" parent="P4/MeshInstance3D3"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="P4/MeshInstance3D3/Area3D"]
+transform = Transform3D(0.9, 0, 0, 0, 1.1, 0, 0, 0, 0.9, 0, 0, 0)
+shape = SubResource("BoxShape3D_thkvd")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="P4"]
+transform = Transform3D(3, 0, 0, 0, 5, 0, 0, 0, 3, 1, -5, 0)
+mesh = SubResource("CylinderMesh_dalyt")
+skeleton = NodePath("../..")
+
+[node name="P3" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -5)
+script = ExtResource("1_dcv5b")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="P3"]
+transform = Transform3D(5, 0, 0, 0, 1, 0, 0, 0, 5, 1, 0, 0)
+mesh = SubResource("BoxMesh_paux3")
+skeleton = NodePath("../..")
+script = ExtResource("7_hvxih")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="P3/MeshInstance3D5"]
+transform = Transform3D(0.2, 0, 0, 0, 1, 0, 0, 0, 0.2, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="P3/MeshInstance3D5/StaticBody3D"]
+transform = Transform3D(5, 0, 0, 0, 1, 0, 0, 0, 5, 0, 0, 0)
+visible = false
+shape = SubResource("BoxShape3D_thkvd")
+
+[node name="Area3D" type="Area3D" parent="P3/MeshInstance3D5"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="P3/MeshInstance3D5/Area3D"]
+transform = Transform3D(0.9, 0, 0, 0, 1.1, 0, 0, 0, 0.9, 0, 0, 0)
+shape = SubResource("BoxShape3D_thkvd")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="P3"]
+transform = Transform3D(3, 0, 0, 0, 5, 0, 0, 0, 3, 1, -5, 0)
+mesh = SubResource("CylinderMesh_dalyt")
+skeleton = NodePath("../..")
+
+[node name="p2" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+script = ExtResource("2_tvl0x")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="p2"]
+transform = Transform3D(5, 0, 0, 0, 1, 0, 0, 0, 5, 1, 0, 0)
+mesh = SubResource("BoxMesh_gi5gl")
+skeleton = NodePath("../..")
+script = SubResource("GDScript_8wsin")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="p2/MeshInstance3D5"]
+transform = Transform3D(0.2, 0, 0, 0, 1, 0, 0, 0, 0.2, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="p2/MeshInstance3D5/StaticBody3D"]
+transform = Transform3D(5, 0, 0, 0, 1, 0, 0, 0, 5, 0, 0, 0)
+shape = SubResource("BoxShape3D_thkvd")
+
+[node name="Area3D" type="Area3D" parent="p2/MeshInstance3D5"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="p2/MeshInstance3D5/Area3D"]
+transform = Transform3D(0.9, 0, 0, 0, 1.1, 0, 0, 0, 0.9, 0, 0, 0)
+shape = SubResource("BoxShape3D_thkvd")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="p2"]
+transform = Transform3D(3, 0, 0, 0, 5, 0, 0, 0, 3, 1, -5, 0)
+mesh = SubResource("CylinderMesh_dalyt")
+skeleton = NodePath("../..")
+
+[node name="P1" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 0)
+script = ExtResource("3_51ghm")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="P1" groups=["DeathWAll"]]
+transform = Transform3D(5, 0, 0, 0, 1, 0, 0, 0, 5, 1, 0, 0)
+mesh = SubResource("BoxMesh_0or7o")
+skeleton = NodePath("../..")
+script = SubResource("GDScript_hlo0x")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="P1/MeshInstance3D7"]
+transform = Transform3D(0.2, 0, 0, 0, 1, 0, 0, 0, 0.2, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="P1/MeshInstance3D7/StaticBody3D"]
+transform = Transform3D(5, 0, 0, 0, 1, 0, 0, 0, 5, 0, 0, 0)
+shape = SubResource("BoxShape3D_thkvd")
+
+[node name="Area3D" type="Area3D" parent="P1/MeshInstance3D7"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="P1/MeshInstance3D7/Area3D"]
+transform = Transform3D(0.9, 0, 0, 0, 1.1, 0, 0, 0, 0.9, 0, 0, 0)
+shape = SubResource("BoxShape3D_thkvd")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="P1"]
+transform = Transform3D(3, 0, 0, 0, 5, 0, 0, 0, 3, 1, -5, 0)
+mesh = SubResource("CylinderMesh_dalyt")
+skeleton = NodePath("../..")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-2.91703e-08, 0.744754, -0.667339, 3.25542e-08, 0.667339, 0.744754, 1, -1.77636e-15, -4.37114e-08, -4.33944, 10.5423, -2.35671)
+fov = 61.875
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(-2.91703e-08, 0.744754, -0.667339, 3.25542e-08, 0.667339, 0.744754, 1, -1.77636e-15, -4.37114e-08, 3.74931, 14.6727, -1.54972)
+visible = false
+light_color = Color(0.898039, 0.901961, 0.901961, 1)
+light_energy = 10.0
+light_indirect_energy = 10.244
+light_volumetric_fog_energy = 7.737
+light_size = 1.0
+shadow_enabled = true
+omni_range = 35.853
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="."]
+transform = Transform3D(-2.91703e-08, 0.744754, -0.667339, 3.25542e-08, 0.667339, 0.744754, 1, 8.88178e-15, -4.37114e-08, 3.74931, 14.6727, 19.693)
+visible = false
+light_color = Color(0.898039, 0.901961, 0.901961, 1)
+light_energy = 10.0
+light_indirect_energy = 10.244
+light_volumetric_fog_energy = 7.737
+light_size = 1.0
+shadow_enabled = true
+omni_range = 35.853
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="." groups=["Joueur"]]
+transform = Transform3D(-4.24034e-08, 0.242802, -0.970076, 1.06132e-08, 0.970076, 0.242802, 1, -1.77636e-15, -4.37114e-08, 4.01763, 2.15746, -0.3448)
+script = SubResource("GDScript_qfdio")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+shape = SubResource("CapsuleShape3D_08yn8")
+
+[node name="Joueur" type="MeshInstance3D" parent="CharacterBody3D"]
+transform = Transform3D(-4.24034e-08, 1.06132e-08, 1, 0.242802, 0.970076, -4.44089e-15, -0.970076, 0.242802, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("CapsuleMesh_4gdu3")
+skeleton = NodePath("../../P3/MeshInstance3D5")
+script = SubResource("GDScript_a76ne")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CharacterBody3D/Joueur"]
+
+[node name="Area3D" type="Area3D" parent="." groups=["DeathWAll"]]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, -10, 0)
+script = SubResource("GDScript_1hn0d")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" groups=["DeathWAll"]]
+transform = Transform3D(1000, 0, 0, 0, 1, 0, 0, 0, 1000, 0, 0, 0)
+shape = SubResource("BoxShape3D_0a8cs")
+script = SubResource("GDScript_e1mbo")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 40.0
+script = ExtResource("8_qavw1")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+enabled = false
+
+[node name="Node" type="Node" parent="."]
+
+[node name="Label" type="Label" parent="."]
+offset_left = 20.0
+offset_top = 510.0
+offset_right = 271.0
+offset_bottom = 646.0
+text = "réponse1"
+label_settings = SubResource("LabelSettings_b7ixp")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+script = ExtResource("7_loj4a")
+
+[node name="Label3" type="Label" parent="."]
+offset_left = 580.0
+offset_top = 510.0
+offset_right = 831.0
+offset_bottom = 646.0
+text = "réponse1"
+label_settings = SubResource("LabelSettings_mmxuj")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+script = ExtResource("8_43n8c")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="."]
+visible = false
+modulate = Color(0.00392157, 0.0156863, 0, 1)
+position = Vector2(583, 292)
+scale = Vector2(3, 3)
+shape = SubResource("RectangleShape2D_f7e2o")
+debug_color = Color(0, 0, 0, 0.419608)
+script = ExtResource("10_em1c2")
+
+[node name="Label4" type="Label" parent="."]
+offset_left = 860.0
+offset_top = 512.0
+offset_right = 1111.0
+offset_bottom = 648.0
+text = "réponse1"
+label_settings = SubResource("LabelSettings_daxpu")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+script = ExtResource("9_xnyir")
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 297.0
+offset_top = 510.0
+offset_right = 548.0
+offset_bottom = 646.0
+text = "réponse2"
+label_settings = SubResource("LabelSettings_ccw26")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+script = ExtResource("10_xoskx")
+
+[node name="Mort" type="Label" parent="."]
+visible = false
+modulate = Color(0.819608, 0.819608, 0.819608, 1)
+offset_left = -38.0
+offset_top = 106.0
+offset_right = 213.0
+offset_bottom = 242.0
+scale = Vector2(5, 5)
+text = "Partie terminé"
+label_settings = SubResource("LabelSettings_7jhoh")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+script = ExtResource("13_k0xhc")
+
+[node name="eau" type="MeshInstance3D" parent="."]
+transform = Transform3D(70, 0, 0, 0, 1, 0, 0, 0, 140, 10.731, -4.44903, -1.57628)
+mesh = SubResource("QuadMesh_cb7gb")
+script = ExtResource("16_ir3o3")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.908762, -0.0777474, 0.410008, 0.238121, 0.71024, 0.662463, -0.342709, 0.699653, -0.626926, -12.0696, 14.6727, -95.4833)
+light_color = Color(0.866667, 0.937255, 0.905882, 1)
+light_energy = 2.0
+light_indirect_energy = 4.789
+light_angular_distance = 10.0
+shadow_enabled = true
+shadow_bias = 0.889
+shadow_transmittance_bias = -2.055
+shadow_blur = 0.342
+script = ExtResource("17_jnrq8")
+
+[node name="Button" type="Button" parent="."]
+visible = false
+offset_left = 464.0
+offset_top = 342.0
+offset_right = 729.0
+offset_bottom = 444.0
+action_mode = 0
+text = "Commencer une partie"
+script = ExtResource("17_cb002")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(100, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.918402, 0.51506, -2.58427)
+visible = false
+layers = 16
+mesh = SubResource("BoxMesh_0m1lk")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D3"]
+disable_mode = 2
+physics_material_override = SubResource("PhysicsMaterial_ssvpw")
+constant_linear_velocity = Vector3(50, 4, 50)
+constant_angular_velocity = Vector3(0.523599, 0.523599, 0)
+script = ExtResource("18_5oljy")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D3/StaticBody3D"]
+shape = SubResource("BoxShape3D_6ppxt")
+disabled = true
+script = ExtResource("19_gi6cr")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-06, 0, 0.1, 0, 0.1, 0, -100, 0, -4.37114e-09, 4.6104, 0.51506, -2.58427)
+visible = false
+layers = 16
+mesh = SubResource("BoxMesh_0m1lk")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D4"]
+disable_mode = 2
+physics_material_override = SubResource("PhysicsMaterial_ssvpw")
+constant_linear_velocity = Vector3(5, 5, 5)
+constant_angular_velocity = Vector3(0.523599, 0.523599, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D4/StaticBody3D"]
+shape = SubResource("BoxShape3D_6ppxt")
+disabled = true
+
+[node name="AudioListener3D" type="AudioListener3D" parent="."]
+current = true
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="AudioListener3D"]
+stream = ExtResource("21_tvonb")
+volume_db = -11.852
+max_db = -0.333
+pitch_scale = 0.75
+autoplay = true
+script = ExtResource("21_jfnau")
+
+[node name="Multiplicateur" type="Label" parent="."]
+anchors_preset = -1
+anchor_right = 0.675
+anchor_bottom = 0.113
+offset_left = 1114.0
+offset_top = 55.0
+offset_right = 351.4
+offset_bottom = 3.776
+scale = Vector2(2, 2)
+text = "X1
+"
+label_settings = SubResource("LabelSettings_1w3ja")
+script = ExtResource("25_vwjvh")
+
+[node name="proch" type="Label" parent="."]
+anchors_preset = -1
+anchor_right = 0.675
+anchor_bottom = 0.113
+offset_left = 1113.0
+offset_top = 89.0
+offset_right = 345.4
+offset_bottom = 30.776
+scale = Vector2(2, 2)
+label_settings = SubResource("LabelSettings_fs6hk")
+script = ExtResource("25_mea12")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+pitch_scale = 0.81
+script = ExtResource("22_y4xjs")
+
+[node name="Container" type="Container" parent="."]
+modulate = Color(0.313726, 0.313726, 0.313726, 1)
+offset_left = 218.0
+offset_top = 25.0
+offset_right = 258.0
+offset_bottom = 65.0
+theme = SubResource("Theme_41o2x")
+
+[node name="Panel" type="Panel" parent="."]
+z_index = -5
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 234.0
+offset_bottom = 70.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_60auf")
+
+[node name="Panel" type="Panel" parent="Panel"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 14.0
+offset_top = -25.5
+offset_right = 108.0
+offset_bottom = 23.5
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_8aiy5")
+
+[node name="Stopwatch(1)" type="Sprite2D" parent="Panel/Panel"]
+modulate = Color(0.168627, 0.168627, 0.168627, 1)
+position = Vector2(44, 25)
+scale = Vector2(0.1, 0.097)
+texture = ExtResource("28_47tdu")
+
+[node name="Panel2" type="Panel" parent="."]
+z_index = -5
+offset_left = 1031.0
+offset_top = 8.0
+offset_right = 1116.0
+offset_bottom = 73.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_v2pcp")
+
+[node name="Score" type="Label" parent="Panel2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.675
+anchor_bottom = 0.113
+offset_left = 5.0
+offset_top = -3.0
+offset_right = -13.375
+offset_bottom = 23.655
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+text = "0"
+label_settings = SubResource("LabelSettings_34xf7")
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("20_pso7k")
+
+[node name="Panel3" type="Panel" parent="."]
+z_index = -5
+offset_left = 401.0
+offset_top = 10.0
+offset_right = 736.0
+offset_bottom = 153.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_vwwet")
+
+[node name="Question" type="Label" parent="Panel3"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -125.5
+offset_top = -68.0
+offset_right = 125.5
+offset_bottom = 68.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Question "
+label_settings = SubResource("LabelSettings_6hb5m")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+script = ExtResource("7_8sdh7")
+
+[node name="Panel4" type="Panel" parent="."]
+z_index = -5
+offset_left = -2.0
+offset_top = 510.0
+offset_right = 1150.0
+offset_bottom = 648.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_wolxc")
+
+[node name="Panel" type="Panel" parent="Panel4"]
+layout_mode = 0
+offset_left = 22.0
+offset_right = 274.0
+offset_bottom = 140.0
+theme_override_styles/panel = ExtResource("29_kyfja")
+
+[node name="Panel2" type="Panel" parent="Panel4"]
+layout_mode = 0
+offset_left = 296.0
+offset_top = -4.0
+offset_right = 550.0
+offset_bottom = 138.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_aa4wd")
+
+[node name="Panel3" type="Panel" parent="Panel4"]
+layout_mode = 0
+offset_left = 578.0
+offset_top = -2.0
+offset_right = 832.0
+offset_bottom = 138.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_oqgox")
+
+[node name="Panel4" type="Panel" parent="Panel4"]
+layout_mode = 0
+offset_left = 864.0
+offset_top = 2.0
+offset_right = 1114.0
+offset_bottom = 134.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_jnlj1")
+
+[connection signal="body_entered" from="P4/MeshInstance3D3/Area3D" to="P4/MeshInstance3D3" method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="P4/MeshInstance3D3/Area3D" to="P4/MeshInstance3D3" method="_on_area_3d_body_exited"]
+[connection signal="body_entered" from="P3/MeshInstance3D5/Area3D" to="P3/MeshInstance3D5" method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="P3/MeshInstance3D5/Area3D" to="P3/MeshInstance3D5" method="_on_area_3d_body_exited"]
+[connection signal="body_entered" from="p2/MeshInstance3D5/Area3D" to="p2/MeshInstance3D5" method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="p2/MeshInstance3D5/Area3D" to="p2/MeshInstance3D5" method="_on_area_3d_body_exited"]
+[connection signal="body_entered" from="P1/MeshInstance3D7/Area3D" to="P1/MeshInstance3D7" method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="P1/MeshInstance3D7/Area3D" to="P1/MeshInstance3D7" method="_on_area_3d_body_exited"]
+[connection signal="body_entered" from="Area3D" to="Timer" method="_on_area_3d_body_entered"]
+[connection signal="body_entered" from="Area3D" to="Panel3/Question" method="_on_area_3d_body_entered"]
+[connection signal="ready" from="Timer" to="CharacterBody3D" method="_on_timer_ready"]
+[connection signal="timeout" from="Timer" to="P4" method="_on_timer_timeout"]
+[connection signal="timeout" from="Timer" to="P3" method="_on_timer_timeout"]
+[connection signal="timeout" from="Timer" to="p2" method="_on_timer_timeout"]
+[connection signal="timeout" from="Timer" to="P1" method="_on_timer_timeout"]
+[connection signal="timeout" from="Timer" to="MeshInstance3D3/StaticBody3D" method="_on_timer_timeout"]
+[connection signal="timeout" from="Timer" to="MeshInstance3D3/StaticBody3D/CollisionShape3D" method="_on_timer_timeout"]
+[connection signal="timeout" from="Timer" to="Panel3/Question" method="_on_timer_timeout"]
+[connection signal="tree_exiting" from="Timer" to="Mort" method="_on_timer_tree_exiting"]
+[connection signal="tree_exiting" from="Timer" to="Button" method="_on_timer_tree_exiting"]
+[connection signal="tree_exiting" from="Timer" to="Panel2/Score" method="_on_timer_tree_exiting"]
+[connection signal="pressed" from="Button" to="CharacterBody3D" method="_on_button_pressed"]
+[connection signal="pressed" from="Button" to="Timer" method="_on_button_pressed"]
+[connection signal="pressed" from="Button" to="CollisionShape2D5" method="_on_button_pressed"]
+[connection signal="pressed" from="Button" to="Mort" method="_on_button_pressed"]
+[connection signal="pressed" from="Button" to="Button" method="_on_pressed"]
+[connection signal="pressed" from="Button" to="Panel3/Question" method="_on_button_pressed"]
+[connection signal="finished" from="AudioStreamPlayer" to="AudioStreamPlayer" method="_on_finished"]
+[connection signal="focus_exited" from="Panel3/Question" to="Timer" method="_on_question_focus_exited"]
+[connection signal="focus_exited" from="Panel3/Question" to="Mort" method="_on_question_focus_exited"]

@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://n78nulasyq3s"]
+
+[ext_resource type="PackedScene" uid="uid://dkajj5vujyr4f" path="res://mainMenu.tscn" id="1_42gkh"]
+[ext_resource type="Material" uid="uid://bruab3kvo43a7" path="res://mat.tres" id="2_wtuwv"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_4wges"]
+material = ExtResource("2_wtuwv")
+subdivide_width = 200
+subdivide_depth = 200
+orientation = 1
+
+[node name="Node3D" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="eau" type="MeshInstance3D" parent="."]
+transform = Transform3D(70, 0, 0, 0, 1, 0, 0, 0, 140, 10.731, -4.44903, -1.57628)
+mesh = SubResource("QuadMesh_4wges")
+
+[node name="Control" parent="." instance=ExtResource("1_42gkh")]
+offset_left = -580.0
+offset_top = -328.0
+offset_right = -580.0
+offset_bottom = -328.0
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-2.91703e-08, 0.744754, -0.667339, 3.25542e-08, 0.667339, 0.744754, 1, -1.77636e-15, -4.37114e-08, -4.33944, 10.5423, -2.35671)
+fov = 61.875

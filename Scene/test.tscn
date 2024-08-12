@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://be5pmp2ar42s2"]
+
+[ext_resource type="Material" uid="uid://bruab3kvo43a7" path="res://mat.tres" id="1_jthxi"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_md16k"]
+material = ExtResource("1_jthxi")
+subdivide_width = 200
+subdivide_depth = 200
+orientation = 1
+
+[node name="Node3D" type="Node3D"]
+
+[node name="eau" type="MeshInstance3D" parent="."]
+transform = Transform3D(70, 0, 0, 0, 1, 0, 0, 0, 140, 10.731, -4.44903, -1.57628)
+mesh = SubResource("QuadMesh_md16k")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.859031, 0.381257, -0.341626, -1.00113e-08, 0.667339, 0.744754, 0.511923, 0.639767, -0.573265, -33.9036, 14.6727, -34.698)
+light_color = Color(0.752941, 0.894118, 0.988235, 1)
+light_energy = 2.0
+light_indirect_energy = 4.789
+light_angular_distance = 10.0
+shadow_enabled = true
+shadow_bias = 0.889
+shadow_transmittance_bias = -2.055
+shadow_blur = 0.342

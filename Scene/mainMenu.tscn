@@ -1,0 +1,135 @@
+[gd_scene load_steps=9 format=3 uid="uid://dkajj5vujyr4f"]
+
+[ext_resource type="StyleBox" uid="uid://e2vd440jir5h" path="res://styleb.tres" id="1_rwemm"]
+[ext_resource type="Script" path="res://lancerPartie.gd" id="2_0qfwm"]
+[ext_resource type="Script" path="res://PanelButton.gd" id="2_5lsww"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_06pdj"]
+draw_center = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o6gc5"]
+draw_center = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uptmv"]
+bg_color = Color(0.188235, 0.423529, 0.427451, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.298039, 0.647059, 0.607843, 1)
+border_blend = true
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+corner_detail = 15
+shadow_color = Color(0.00784314, 0.952941, 0.952941, 0.6)
+shadow_size = 10
+anti_aliasing_size = 4.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_iyt83"]
+font_size = 30
+font_color = Color(0.72549, 1, 1, 1)
+outline_size = 2
+shadow_size = 4
+
+[sub_resource type="Shortcut" id="Shortcut_ln54t"]
+events = [null]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 2.0
+offset_right = 1160.0
+offset_bottom = 648.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_06pdj")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -578.5
+offset_top = -324.0
+offset_right = 578.5
+offset_bottom = 324.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_o6gc5")
+
+[node name="Panel" type="Panel" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -169.0
+offset_top = -51.0
+offset_right = 159.0
+offset_bottom = 51.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_stretch_ratio = 6.56
+theme_override_styles/panel = SubResource("StyleBoxFlat_uptmv")
+
+[node name="Label" type="Label" parent="Panel/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -165.0
+offset_top = -53.5
+offset_right = 165.0
+offset_bottom = 53.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Question 
+Game"
+label_settings = SubResource("LabelSettings_iyt83")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PanelButton" type="Panel" parent="Panel"]
+layout_mode = 1
+offset_left = 452.5
+offset_top = 421.0
+offset_right = 694.5
+offset_bottom = 495.0
+theme_override_styles/panel = ExtResource("1_rwemm")
+script = ExtResource("2_5lsww")
+
+[node name="Button" type="Button" parent="Panel/PanelButton"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -90.0
+offset_top = 4.0
+offset_right = 93.0
+offset_bottom = 69.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.662745, 1, 1, 1)
+theme_override_font_sizes/font_size = 25
+action_mode = 0
+shortcut = SubResource("Shortcut_ln54t")
+text = "Commencer"
+flat = true
+script = ExtResource("2_0qfwm")
+
+[connection signal="mouse_entered" from="Panel/PanelButton" to="Panel/PanelButton" method="_on_mouse_entered"]
+[connection signal="mouse_entered" from="Panel/PanelButton" to="Panel/PanelButton/Button" method="_on_panel_button_mouse_entered"]
+[connection signal="pressed" from="Panel/PanelButton/Button" to="Panel/PanelButton/Button" method="_on_pressed"]
